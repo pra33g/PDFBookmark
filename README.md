@@ -37,11 +37,14 @@ Simply place both the files together and run PDFBookmark:
   3. Select the option 'Begin adding bookmarks'
 
 <h4>How to write a bookmarks.file</h4>
-  1. Write **page number** followed by **title of the bookmark**, separated by a **space**.
+  **fff**
+  
+  1. Write  page number  followed by  title of the bookmark* , separated by a space.
   2. One bookmark per line only.
   3. Example: 20 Page Twenty
  
  To set a bookmark to page 20 titled as 'Page Twenty'.
+ 
 **NOTE:** The page number must not be out of bounds of total available pages in the pdf file (especially while adding offset to the bookmarks).
 
 <h3>In action</h3>
