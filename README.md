@@ -5,7 +5,7 @@ An open source tool to add bookmarks to pdfs.
 Using outline/bookmarks is the conventional way of navigating a pdf document. Otherwise the navigation becomes too cumbersome.
 No simple open source ways exist currently for adding bookmarks/ contents to a pdf document.
 
-PDFBookmark is a tool to allow adding bookmarks/outline to a pdf file that lacks it with minimum hassle.
+<strong>PDFBookmark</strong> is a tool to allow adding bookmarks/outline to a pdf file that lacks it with minimum hassle.
 
 <h3>The Problem</h3>
 Almost all options directly or indirectly rely on Adobe Acrobat for doing this. Even the open source software suits like LibreOffice, OpenOffice etc don’t have a solution for this.
@@ -37,7 +37,7 @@ Simply place both the files together and run PDFBookmark:
   3. Select the option 'Begin adding bookmarks'
 
 <h4>How to write a bookmarks.file</h4>
-  1. Write  page number  followed by  title of the bookmark , separated by a space.
+  1. Write  <strong>page number</strong>  followed by  </strong>title of the bookmark</strong> , separated by a<strong> space</strong>.
   2. One bookmark per line only.
   3. Example: 20 Page Twenty
  
