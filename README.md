@@ -40,7 +40,8 @@ Simply place both the files together and run PDFBookmark:
   Write  <strong>page number</strong>  followed by  <strong>title of the bookmark</strong> , separated by a <strong>space</strong>.
   
   1. One bookmark per line only.
-  2. Example: 20 Page Twenty
+  2. Use tabs (only) to create child bookmarks/ tree structure. <strong>No 4 spaces</strong> 
+  3. Example: 20 Page Twenty
  
  To set a bookmark to page 20 titled as 'Page Twenty'.
  
