@@ -56,3 +56,5 @@ Into this:
 
 
 Linux source code coming soon.
+
+Written with ❤️ in C.
