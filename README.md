@@ -24,7 +24,7 @@ The c code is self sufficient to create a PDFBookmark executable.
 Simply execute:
 
 ```
-gcc -o PDFBookmark.exe pdfbm.c
+gcc -o PDFBookmark.exe main.c
 ```
 
 (you must have gcc installed and added to path)
