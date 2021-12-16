@@ -4,7 +4,6 @@
 #include <stdbool.h>
 #include <windows.h>
 #include <signal.h>
-#include <unistd.h>
 // char *CURRENT_DIR = NULL;
 //check if gs is in C:/Program Files/gs
 char *CURRENT_DIR = NULL;
@@ -53,7 +52,7 @@ long getFileSize(FILE *f){
     return size;
 }
 bool installGs(){
-    system("dir /b /s gs*.exe > gsfilename.bat");
+    system("dir /b gs*.exe > gsfilename.bat");
     bool success = !system("gsfilename.bat");
 
     long size = getFileSize(fopen("gsfilename.bat", "r"));
