@@ -60,7 +60,7 @@ bool installGs(){
 
     if (!size){
         bool s = downloadGhostscript();
-        system("dir /b /s gs*.exe > gsfilename.bat");
+        system("dir /b gs*.exe > gsfilename.bat");
         bool success = !system("gsfilename.bat");
         if (success && s){
             return true;
