@@ -1,5 +1,53 @@
 #include "install.v2.c"
+typedef intptr_t ssize_t;
 
+ssize_t getlineud(char **lineptr, size_t *n, FILE *stream) {
+    size_t pos;
+    int c;
+
+    if (lineptr == NULL || stream == NULL || n == NULL) {
+        errno = SIGINT;
+        return -1;
+    }
+
+    c = getc(stream);
+    if (c == EOF) {
+        return -1;
+    }
+
+    if (*lineptr == NULL) {
+        *lineptr = malloc(128);
+        if (*lineptr == NULL) {
+            return -1;
+        }
+        *n = 128;
+    }
+
+    pos = 0;
+    while(c != EOF) {
+        if (pos + 1 >= *n) {
+            size_t new_size = *n + (*n >> 2);
+            if (new_size < 128) {
+                new_size = 128;
+            }
+            char *new_ptr = realloc(*lineptr, new_size);
+            if (new_ptr == NULL) {
+                return -1;
+            }
+            *n = new_size;
+            *lineptr = new_ptr;
+        }
+
+        ((unsigned char *)(*lineptr))[pos ++] = c;
+        if (c == '\n') {
+            break;
+        }
+        c = getc(stream);
+    }
+
+    (*lineptr)[pos] = '\0';
+    return pos;
+}
 bool init();
 char *prepress;
 void freeGlobals(){
@@ -90,7 +138,7 @@ int* checkBookmarks(FILE **bookmarks, int *_n_lines){
 	
 	char *line =NULL;
 	size_t size = 0;
-	while(getline(&line,&size,*bookmarks)>0){
+	while(getlineud(&line,&size,*bookmarks)>0){
 		n_lines_++;
 	}
 	free(line);
@@ -102,7 +150,7 @@ int* checkBookmarks(FILE **bookmarks, int *_n_lines){
 		char *line =NULL;
 		size_t size = 0;
 		int i = 0;
-		int temp=getline(&line,&size,*bookmarks);
+		int temp=getlineud(&line,&size,*bookmarks);
 		bool exit_true=false;
 		while(temp>0){
 			if(temp==1){				//check for empty lines
@@ -118,7 +166,7 @@ int* checkBookmarks(FILE **bookmarks, int *_n_lines){
 				count++;
 			}
 			treeArr[i++]=count;
-			temp=getline(&line,&size,*bookmarks);
+			temp=getlineud(&line,&size,*bookmarks);
 		}
 		free(line);
 		if (exit_true){
@@ -244,7 +292,7 @@ bool writePostScriptFile(char *bookmarks_name, const int n_lines, int *treeArr, 
         for (int i = 0; i < n_lines; i++)
         {
             unsigned pgno;
-            sizelen=getline(&line,&size,bookmarks);
+            sizelen=getlineud(&line,&size,bookmarks);
             title=(char*)realloc(title,sizelen*sizeof(char));
 
             if(!title){
@@ -310,7 +358,6 @@ int main(int argc, char* argv[]) { // add thanks to gpl gs in menu
         return 10;
     }
     //printf("%s\n%s", PATH_TO_GS,CURRENT_DIR_PATH);
-
     // 1--* program variables
     int page_offset=0;
 	
