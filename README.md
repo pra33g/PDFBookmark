@@ -70,6 +70,7 @@ Into this:
 ![2](https://user-images.githubusercontent.com/77376446/124363815-3be61080-dc5b-11eb-9729-95fdcd58eb50.gif)
 
 
-Linux source code coming soon.
+Linux:
+Make sure ghostscript is installed.
 
 Written with ❤️ in C.
